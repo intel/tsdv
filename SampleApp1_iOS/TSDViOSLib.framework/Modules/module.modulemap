@@ -1,0 +1,6 @@
+framework module TSDViOSLib {
+  umbrella header "TSDViOSLib.h"
+
+  export *
+  module * { export * }
+}
