@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2015, Intel Corporation.
+
+This program is licensed under the terms and conditions of the
+Apache License, version 2.0.  The full text of the Apache License is at
+http://www.apache.org/licenses/LICENSE-2.0
+-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/d3.min.js" charset="utf-8"></script>
+    <script src="js/techan.min.js"></script>
+    <script src="js/sampleapp.js" charset="utf-8"></script>
+
+</head>
+<body>
+<div id="charting-page">
+    <div id="charting-top-panel">
+        <h1><span id="current-date">Intel Stock</span></h1>
+    </div>
+    <div id="statistics">
+        <p></p>
+    </div>
+    <div id="chart">
+
+    </div>
+</div>
+</body>
+
+<style>
+    body {
+    font: 10px sans-serif;
+    }
+
+    .axis path,
+    .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+    }
+
+    path.candle {
+    stroke: #000000;
+    }
+
+    path.candle.body {
+    stroke-width: 0;
+    }
+
+    path.candle.up {
+    fill: purple;
+    stroke: purple;
+    }
+
+    path.candle.down {
+    fill: teal;
+    stroke: teal;
+    }
+
+    rect.pane {
+    cursor: move;
+    fill: none;
+    pointer-events: all;
+    }
+</style>
+
+<script>
+    var textWidth;
+    var textTop;
+
+    // The following patch fixes the swiping issue on Android
+    // originated from https://developer.motorolasolutions.com/thread/4802
+    //
+    // Touchmove events are cancelled on Android KitKat when scrolling is possible on the touched element.
+    // Scrolling is always vertical in our app. Cancel the event when a touchmove is horizontal,
+    // so that all following touchmove events will be raised normally.
+    var startLoc = null;
+    $("body").on("touchstart", function(e) {
+        if(e.originalEvent.touches.length == 1) { // one finger touch
+            // Remember start location.
+            var touch = e.originalEvent.touches[0];
+            startLoc = { x : touch.pageX, y : touch.pageY };
+        }
+    });
+
+    $("body").on("touchmove", function(e) {
+        // Only check first move after the touchstart.
+        if(startLoc) {
+            var touch = e.originalEvent.touches[0];
+            // Check if the horizontal movement is bigger than the vertical movement.
+            if(Math.abs(startLoc.x - touch.pageX) > Math.abs(startLoc.y - touch.pageY)) {
+                // Prevent default, like scrolling.
+                e.preventDefault();
+            }
+            startLoc = null;
+        }
+    });
+
+    $(window).on("orientationchange", function(){
+        location.reload();
+     });
+
+    $("#statistics").css({
+        width:textWidth,
+        top:textTop
+    });
+    $(function() {
+        var dbStart = 1104739200000;
+        var dbEnd = 1446710400000;
+        setTimeout(function(){
+            setupGraph();
+            getMoreData(dbStart, dbEnd, null, 200000, currentThresholdLevel, "newDataReceived");
+
+        },1500);
+    });
+</script>

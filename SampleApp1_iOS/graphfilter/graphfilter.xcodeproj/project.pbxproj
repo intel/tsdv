@@ -1,0 +1,442 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B303DEDF1BD9A19100AF38DA /* datafilter.h in Headers */ = {isa = PBXBuildFile; fileRef = B303DEDE1BD9A19100AF38DA /* datafilter.h */; settings = {ASSET_TAGS = (); }; };
+		B303DEE11BD9A1AD00AF38DA /* datacache.h in Headers */ = {isa = PBXBuildFile; fileRef = B303DEE01BD9A1AD00AF38DA /* datacache.h */; settings = {ASSET_TAGS = (); }; };
+		B3331AF91B192969001BDAE8 /* graphfilterclib.h in Headers */ = {isa = PBXBuildFile; fileRef = B3E0B5981B167AF800ACCB98 /* graphfilterclib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3331AFA1B192969001BDAE8 /* databasegraphfilter.h in Headers */ = {isa = PBXBuildFile; fileRef = B33448AD1B14FC0D008C5921 /* databasegraphfilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3331AFB1B192969001BDAE8 /* graphfilter.h in Headers */ = {isa = PBXBuildFile; fileRef = B33448AE1B14FC0D008C5921 /* graphfilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B33448961B14FBEC008C5921 /* libgraphfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B334488A1B14FBEC008C5921 /* libgraphfilter.a */; };
+		B33448B11B14FC28008C5921 /* databasegraphfilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B33448AF1B14FC28008C5921 /* databasegraphfilter.cpp */; };
+		B33448B21B14FC28008C5921 /* graphfilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B33448B01B14FC28008C5921 /* graphfilter.cpp */; };
+		B36662241B28E61B00471FE3 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B36662231B28E61B00471FE3 /* jsoncpp.cpp */; };
+		B36662261B28E62100471FE3 /* json-forwards.h in Headers */ = {isa = PBXBuildFile; fileRef = B36662251B28E62100471FE3 /* json-forwards.h */; };
+		B36662281B28E62600471FE3 /* json.h in Headers */ = {isa = PBXBuildFile; fileRef = B36662271B28E62600471FE3 /* json.h */; };
+		B36CC4C91BD83C7C00650FA9 /* sqlitedatacache.h in Headers */ = {isa = PBXBuildFile; fileRef = B36CC4C81BD83C7C00650FA9 /* sqlitedatacache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B36CC4CB1BD83CCA00650FA9 /* sqlitedatacache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B36CC4CA1BD83CCA00650FA9 /* sqlitedatacache.cpp */; settings = {ASSET_TAGS = (); }; };
+		B36CC4CC1BD83CF200650FA9 /* sqlitedatacache.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B36CC4C81BD83C7C00650FA9 /* sqlitedatacache.h */; };
+		B3CDF46F1B1696A900262686 /* databasegraphfilter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B33448AD1B14FC0D008C5921 /* databasegraphfilter.h */; };
+		B3CDF4701B1696A900262686 /* graphfilter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B33448AE1B14FC0D008C5921 /* graphfilter.h */; };
+		B3E0B5971B167AEF00ACCB98 /* graphfilterclib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3E0B5961B167AEF00ACCB98 /* graphfilterclib.cpp */; };
+		B3E0B5991B167B2A00ACCB98 /* graphfilterclib.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3E0B5981B167AF800ACCB98 /* graphfilterclib.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B33448971B14FBEC008C5921 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B33448821B14FBEC008C5921 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B33448891B14FBEC008C5921;
+			remoteInfo = graphfilter;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B33448881B14FBEC008C5921 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				B36CC4CC1BD83CF200650FA9 /* sqlitedatacache.h in CopyFiles */,
+				B3CDF46F1B1696A900262686 /* databasegraphfilter.h in CopyFiles */,
+				B3CDF4701B1696A900262686 /* graphfilter.h in CopyFiles */,
+				B3E0B5991B167B2A00ACCB98 /* graphfilterclib.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B303DEDE1BD9A19100AF38DA /* datafilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = datafilter.h; path = ../../graphfilter/include/graphfilter/datafilter.h; sourceTree = SOURCE_ROOT; };
+		B303DEE01BD9A1AD00AF38DA /* datacache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = datacache.h; path = ../../graphfilter/include/graphfilter/datacache.h; sourceTree = SOURCE_ROOT; };
+		B334488A1B14FBEC008C5921 /* libgraphfilter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libgraphfilter.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B33448951B14FBEC008C5921 /* graphfilterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = graphfilterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B334489B1B14FBEC008C5921 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B33448AD1B14FC0D008C5921 /* databasegraphfilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = databasegraphfilter.h; path = ../../graphfilter/include/graphfilter/databasegraphfilter.h; sourceTree = SOURCE_ROOT; };
+		B33448AE1B14FC0D008C5921 /* graphfilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = graphfilter.h; path = ../../graphfilter/include/graphfilter/graphfilter.h; sourceTree = SOURCE_ROOT; };
+		B33448AF1B14FC28008C5921 /* databasegraphfilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = databasegraphfilter.cpp; path = ../../graphfilter/src/databasegraphfilter.cpp; sourceTree = SOURCE_ROOT; };
+		B33448B01B14FC28008C5921 /* graphfilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = graphfilter.cpp; path = ../../graphfilter/src/graphfilter.cpp; sourceTree = SOURCE_ROOT; };
+		B36662231B28E61B00471FE3 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jsoncpp.cpp; path = ../../graphfilter/jsoncpp/jsoncpp.cpp; sourceTree = SOURCE_ROOT; };
+		B36662251B28E62100471FE3 /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "json-forwards.h"; path = "../../graphfilter/jsoncpp/json/json-forwards.h"; sourceTree = SOURCE_ROOT; };
+		B36662271B28E62600471FE3 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = json.h; path = ../../graphfilter/jsoncpp/json/json.h; sourceTree = SOURCE_ROOT; };
+		B36CC4C81BD83C7C00650FA9 /* sqlitedatacache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sqlitedatacache.h; path = ../../graphfilter/include/graphfilter/sqlitedatacache.h; sourceTree = SOURCE_ROOT; };
+		B36CC4CA1BD83CCA00650FA9 /* sqlitedatacache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sqlitedatacache.cpp; path = ../../graphfilter/src/sqlitedatacache.cpp; sourceTree = SOURCE_ROOT; };
+		B3E0B5961B167AEF00ACCB98 /* graphfilterclib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = graphfilterclib.cpp; path = ../../graphfilter/src/graphfilterclib.cpp; sourceTree = SOURCE_ROOT; };
+		B3E0B5981B167AF800ACCB98 /* graphfilterclib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = graphfilterclib.h; path = ../../graphfilter/include/graphfilter/graphfilterclib.h; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B33448871B14FBEC008C5921 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B33448921B14FBEC008C5921 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B33448961B14FBEC008C5921 /* libgraphfilter.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B33448811B14FBEC008C5921 = {
+			isa = PBXGroup;
+			children = (
+				B334488C1B14FBEC008C5921 /* graphfilter */,
+				B33448991B14FBEC008C5921 /* graphfilterTests */,
+				B334488B1B14FBEC008C5921 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B334488B1B14FBEC008C5921 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B334488A1B14FBEC008C5921 /* libgraphfilter.a */,
+				B33448951B14FBEC008C5921 /* graphfilterTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B334488C1B14FBEC008C5921 /* graphfilter */ = {
+			isa = PBXGroup;
+			children = (
+				B303DEE01BD9A1AD00AF38DA /* datacache.h */,
+				B303DEDE1BD9A19100AF38DA /* datafilter.h */,
+				B36CC4CA1BD83CCA00650FA9 /* sqlitedatacache.cpp */,
+				B36CC4C81BD83C7C00650FA9 /* sqlitedatacache.h */,
+				B36662271B28E62600471FE3 /* json.h */,
+				B36662251B28E62100471FE3 /* json-forwards.h */,
+				B36662231B28E61B00471FE3 /* jsoncpp.cpp */,
+				B3E0B5981B167AF800ACCB98 /* graphfilterclib.h */,
+				B3E0B5961B167AEF00ACCB98 /* graphfilterclib.cpp */,
+				B33448AF1B14FC28008C5921 /* databasegraphfilter.cpp */,
+				B33448B01B14FC28008C5921 /* graphfilter.cpp */,
+				B33448AD1B14FC0D008C5921 /* databasegraphfilter.h */,
+				B33448AE1B14FC0D008C5921 /* graphfilter.h */,
+			);
+			path = graphfilter;
+			sourceTree = "<group>";
+		};
+		B33448991B14FBEC008C5921 /* graphfilterTests */ = {
+			isa = PBXGroup;
+			children = (
+				B334489A1B14FBEC008C5921 /* Supporting Files */,
+			);
+			path = graphfilterTests;
+			sourceTree = "<group>";
+		};
+		B334489A1B14FBEC008C5921 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B334489B1B14FBEC008C5921 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B3331AF41B1927AE001BDAE8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B36662281B28E62600471FE3 /* json.h in Headers */,
+				B36662261B28E62100471FE3 /* json-forwards.h in Headers */,
+				B303DEDF1BD9A19100AF38DA /* datafilter.h in Headers */,
+				B36CC4C91BD83C7C00650FA9 /* sqlitedatacache.h in Headers */,
+				B3331AFA1B192969001BDAE8 /* databasegraphfilter.h in Headers */,
+				B3331AFB1B192969001BDAE8 /* graphfilter.h in Headers */,
+				B3331AF91B192969001BDAE8 /* graphfilterclib.h in Headers */,
+				B303DEE11BD9A1AD00AF38DA /* datacache.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B33448891B14FBEC008C5921 /* graphfilter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B334489E1B14FBEC008C5921 /* Build configuration list for PBXNativeTarget "graphfilter" */;
+			buildPhases = (
+				B33448861B14FBEC008C5921 /* Sources */,
+				B33448871B14FBEC008C5921 /* Frameworks */,
+				B33448881B14FBEC008C5921 /* CopyFiles */,
+				B3331AF41B1927AE001BDAE8 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = graphfilter;
+			productName = graphfilter;
+			productReference = B334488A1B14FBEC008C5921 /* libgraphfilter.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		B33448941B14FBEC008C5921 /* graphfilterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B33448A11B14FBEC008C5921 /* Build configuration list for PBXNativeTarget "graphfilterTests" */;
+			buildPhases = (
+				B33448911B14FBEC008C5921 /* Sources */,
+				B33448921B14FBEC008C5921 /* Frameworks */,
+				B33448931B14FBEC008C5921 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B33448981B14FBEC008C5921 /* PBXTargetDependency */,
+			);
+			name = graphfilterTests;
+			productName = graphfilterTests;
+			productReference = B33448951B14FBEC008C5921 /* graphfilterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B33448821B14FBEC008C5921 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Intel POC";
+				TargetAttributes = {
+					B33448891B14FBEC008C5921 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					B33448941B14FBEC008C5921 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+				};
+			};
+			buildConfigurationList = B33448851B14FBEC008C5921 /* Build configuration list for PBXProject "graphfilter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B33448811B14FBEC008C5921;
+			productRefGroup = B334488B1B14FBEC008C5921 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B33448891B14FBEC008C5921 /* graphfilter */,
+				B33448941B14FBEC008C5921 /* graphfilterTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B33448931B14FBEC008C5921 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B33448861B14FBEC008C5921 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B33448B11B14FC28008C5921 /* databasegraphfilter.cpp in Sources */,
+				B36CC4CB1BD83CCA00650FA9 /* sqlitedatacache.cpp in Sources */,
+				B36662241B28E61B00471FE3 /* jsoncpp.cpp in Sources */,
+				B33448B21B14FC28008C5921 /* graphfilter.cpp in Sources */,
+				B3E0B5971B167AEF00ACCB98 /* graphfilterclib.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B33448911B14FBEC008C5921 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B33448981B14FBEC008C5921 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B33448891B14FBEC008C5921 /* graphfilter */;
+			targetProxy = B33448971B14FBEC008C5921 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B334489C1B14FBEC008C5921 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B334489D1B14FBEC008C5921 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B334489F1B14FBEC008C5921 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		B33448A01B14FBEC008C5921 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		B33448A21B14FBEC008C5921 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = graphfilterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B33448A31B14FBEC008C5921 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = graphfilterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B33448851B14FBEC008C5921 /* Build configuration list for PBXProject "graphfilter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B334489C1B14FBEC008C5921 /* Debug */,
+				B334489D1B14FBEC008C5921 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B334489E1B14FBEC008C5921 /* Build configuration list for PBXNativeTarget "graphfilter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B334489F1B14FBEC008C5921 /* Debug */,
+				B33448A01B14FBEC008C5921 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B33448A11B14FBEC008C5921 /* Build configuration list for PBXNativeTarget "graphfilterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B33448A21B14FBEC008C5921 /* Debug */,
+				B33448A31B14FBEC008C5921 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B33448821B14FBEC008C5921 /* Project object */;
+}

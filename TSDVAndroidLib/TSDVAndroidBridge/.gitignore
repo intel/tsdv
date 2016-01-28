@@ -1,0 +1,8 @@
+/build
+/src/main/obj
+/src/main/libs/armeabi/libgraphfilter.so
+/src/main/libs/armeabi/graphfilter_unittest
+/src/main/libs/armeabi-v7a/libgraphfilter.so
+/src/main/libs/armeabi-v7a/graphfilter_unittest
+/src/main/libs/x86/libgraphfilter.so
+/src/main/libs/x86/graphfilter_unittest

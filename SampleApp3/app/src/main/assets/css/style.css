@@ -1,0 +1,113 @@
+/*
+ * Copyright (c) 2016, Intel Corporation.
+ *
+ * This program is licensed under the terms and conditions of the
+ * Apache License, version 2.0.  The full text of the Apache License is at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ */
+
+html,body {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    -webkit-user-select: none;
+}
+
+#prev-day-button
+{
+    position: absolute;
+    left: 5px;
+    top: 20px;
+    z-index: 1;
+}
+
+#next-day-button
+{
+    position: absolute;
+    right: 5px;
+    top: 20px;
+    z-index: 1;
+}
+
+.axis
+{
+    shape-rendering: crispEdges;
+    font-size: 11px;
+}
+
+.axis path, .axis line
+{
+    fill: none;
+    stroke-width: .5 px;
+}
+
+.x.axis path
+{
+    stroke: #000;
+}
+
+.x.axis line, .x.axis path
+{
+    stroke: none;
+    stroke-opacity: 0;
+}
+
+.x.axis text
+{
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.y.axis line
+{
+    stroke: #ddd;
+}
+
+/* line default */
+.line {
+    fill: none;
+    stroke: black;
+    stroke-width: 1px;
+}
+
+/* bar default */
+.bar {
+    fill: black;
+}
+
+/* heart rate */
+.heartRateLine
+{
+    stroke: purple;
+}
+
+/* body temp */
+.bodyTempLine
+{
+    stroke: blue;
+}
+
+/* Blood Sugar */
+.bloodsugarLine
+{
+    stroke: red;
+}
+
+#touchPane
+{
+    cursor: move;
+    fill: none;
+    pointer-events: all;
+}
+
+/* calories */
+.calories
+{
+    fill: orange;
+}
+
+/* steps */
+.steps {
+    fill: green;
+}

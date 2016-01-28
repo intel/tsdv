@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2015, Intel Corporation.
+
+This program is licensed under the terms and conditions of the
+Apache License, version 2.0.  The full text of the Apache License is at
+http://www.apache.org/licenses/LICENSE-2.0
+-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="jquery-2.1.4.min.js"></script>
+    <script>
+        // The following patch fixes the drop down panel disappearing when first opened
+        // This is caused by a bug of jquerymobile on iOS 9 and this patch is a work-around
+        // that needs to be injected between importing jquery and jquery mobile libraries.
+
+        $(document).bind("mobileinit", function() {
+            $.mobile.hashListeningEnabled = false;
+        });
+    </script>
+    <script src="jquery.mobile-1.4.5.min.js"></script>
+    <script src="d3.min.js" charset="utf-8"></script>
+    <script src="graph.js" charset="utf-8"></script>
+    <script src="graphLegend.js" charset="utf-8"></script>
+    <script src="app.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="left-panel" data-role="panel" data-display="push" data-theme="b">
+        <ul id="left-panel-listview" data-role="listview" data-theme="b" data-divider-theme="a">
+            <li data-icon="false">
+                <a id="open-charting-page">CHARTING</a>
+            </li>
+            <li data-icon="false">
+                <a id="open-logging-page">LOGGING</a>
+            </li>
+        </ul>
+    </div>
+    <div id="charting-page" data-role="page">
+        <div id="charting-top-panel" data-role="header" data-theme="b">
+            <a data-theme="d" data-icon="bars" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="left-panel-button ui-icon-nodisc"></a>
+            <h1><span id="current-date">Charting</span></h1>
+            <a data-rel="popup" id="show-attributes-button" data-theme="d" data-icon="plus" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"></a>
+        </div>
+        <div id="chart" data-role="content">
+            <a id="prev-day-button" data-role="button" data-icon="carat-l" data-iconpos="notext"></a>
+            <a id="next-day-button" data-role="button" data-icon="carat-r" data-iconpos="notext"></a>
+            <div id="attributes-popup" data-role="popup" data-transition="slidedown" class="ui-content">
+                <a data-rel="back" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                <p>Select Attributes</p>
+                <form>
+                    <fieldset data-role="controlgroup" data-type="vertical">
+                        <input type="checkbox" name="checkbox-heartrate" id="checkbox-heartrate" checked="checked" />
+                        <label for="checkbox-heartrate">Heart Rate</label>
+                        <input type="checkbox" name="checkbox-steps" id="checkbox-steps" checked="checked" />
+                        <label for="checkbox-steps">Steps</label>
+                        <input type="checkbox" name="checkbox-calories" id="checkbox-calories" checked="checked" />
+                        <label for="checkbox-calories">Calories</label>
+                        <input type="checkbox" name="checkbox-bodytemp" id="checkbox-bodytemp" checked="checked" />
+                        <label for="checkbox-bodytemp">Body Temp</label>
+                        <input type="checkbox" name="checkbox-bloodsugar" id="checkbox-bloodsugar" checked="checked" />
+                        <label for="checkbox-bloodsugar">Blood Sugar</label>
+                    </fieldset>
+                </form>
+            </div>
+            <div id="statistics">
+                <p></p>
+            </div>
+        </div>
+    </div>
+    <div id="logging-page" data-role="page">
+        <div id="logging-top-panel" data-role="header" data-theme="b">
+            <a data-theme="d" data-icon="bars" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="left-panel-button ui-icon-nodisc"></a>
+            <h1>Logging options</h1>
+        </div>
+        <div data-role="content">
+            <form>
+                <fieldset data-role="loggingControl">
+                    <input type="checkbox" name="logToFile" id="logToFile" onchange="tsdvjs.setLogToFile($('#logToFile').prop('checked'))">
+                    <label for="logToFile">Log to file</label>
+                    <input type="checkbox" name="displayRenderTime" id="displayRenderTime" onchange="tsdvjs.setDisplayRenderTime($('#displayRenderTime').prop('checked')); graphUpdated();">
+                    <label for="displayRenderTime">Display Render Time</label>
+                    <input type="checkbox" name="displayFetchTime" id="displayFetchTime" onchange="tsdvjs.setDisplayFetchTime($('#displayFetchTime').prop('checked')); graphUpdated();">
+                    <label for="displayFetchTime">Display data fetch times</label>
+                    <input type="checkbox" name="displayFPS" id="displayFPS" onchange="tsdvjs.setDisplayFPS($('#displayFPS').prop('checked'))">
+                    <label for="displayFPS">Display Frames Per Second</label>
+                    <input type="button" name="deleteOldLogs" id="deleteOldLogs" value="Delete old log files" onclick="tsdvjs.deleteOldLogs($('#deleteOldLogs').prop('checked'))">
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</body>
+
+<!-- This is code for FPS. Completely optional -->
+<style>
+    .fps {
+        display: inline-block;
+        position: absolute;
+        opacity: 0.8;
+        color: black;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 0.25rem;
+        top: 1rem;
+        left: 3rem;
+    }
+</style>
+<script>
+    var last = 0,
+        FPS = null,
+        total = 0,
+        measurements = [0, 0, 0, 0, 0],
+        index = 0;
+
+    function updateFPS() {
+        if (FPS == null) {
+            FPS = document.createElement('div');
+            FPS.classList.add('fps');
+            FPS.id = "fps";
+            var chartId = document.getElementById("chart");
+            chartId.appendChild(FPS);
+            $("#fps").hide();
+        }
+
+        var now = new Date();
+        total -= measurements[index];
+        measurements[index] = now - last;
+        last = now;
+        total += measurements[index];
+        index = (index + 1) % measurements.length;
+        var fpsText = Math.round(1000 / (total / measurements.length));
+        FPS.innerText = fpsText + 'fps';
+
+        if (tsdvjs.loggingOptions.logToFile) {
+            var currDate = new Date();
+            TSDV.logToFile(sqlFormatSec(currDate), 0, graphInstance.visibleData.length, "FPS : " + fpsText);
+        }
+    }
+</script>
+<!-- End FPS code -->
+
+<script>
+    window.onload = appLoaded();
+    var data = [];
+    var originalData = [];
+    var currentData;
+    var x;
+    var yLeft;
+    var yRight;
+    var width;
+    var height;
+    var currDate;
+    var margin;
+    var textWidth;
+    var textTop;
+
+    $(document).one("pagecreate", function() {
+        $("body > [data-role='panel']").panel();
+        $("body > [data-role='panel'] [data-role='listview']").listview();
+        $("label[for='checkbox-heartrate']").css("color", "purple");
+        $("label[for='checkbox-steps']").css("color", "teal");
+        $("label[for='checkbox-calories']").css("color", "pink");
+        $("label[for='checkbox-bodytemp']").css("color", "blue");
+        $("label[for='checkbox-bloodsugar']").css("color", "red");
+
+        $(document).on("swiperight swipeleft", function(e) {
+            // set edge width to 10% of the window screen
+            var edge_width = $(window).width() * 0.1;
+
+            if ($.mobile.activePage.attr('id') === "charting-page" &&
+                $("#left-panel").css("visibility") === "hidden" &&
+                e.swipestart.coords[0] >= edge_width &&
+                graphInstance.zoom.scale() == 1) {
+                if (e.type === "swiperight" && graphInstance.zoomEnabled) {
+                    getPrevDay();
+                } else if (e.type === "swipeleft" && graphInstance.zoomEnabled) {
+                    getNextDay();
+                }
+            } else if ($.mobile.activePage.jqmData("panel") !== "open" &&
+                e.type === "swiperight" &&
+                e.swipestart.coords[0] < edge_width) {
+                $("#left-panel").panel("open");
+            }
+        });
+
+        currDate = [new Date(2015, 2, 3, 0, 0), new Date(2015, 2, 4, 0, 0)];
+        margin = {
+            top: 0,
+            right: 50,
+            bottom: 0,
+            left: 50
+        };
+        width = $(document).width() - margin.left - margin.right,
+            height = $(document).height() - margin.top - margin.bottom - 70;
+        textWidth = height > width ? width / 1.5 + "px" : height / 1.5 + "px";
+        textTop = height > width ? width / 3 + "px" : height / 3 + "px";
+        $("#statistics").css({
+            width: textWidth,
+            top: textTop
+        });
+
+        x = d3.time.scale().range([0, width]);
+        yLeft = d3.scale.linear().range([height, 50]);
+        yRight = d3.scale.linear().range([height, 50]);
+
+        init();
+
+        graphInstance.getMoreData(currDate[0], currDate[1], null, zoomDataSize, "newDataReceived", "Reduced");
+
+        $.mobile.changePage("#charting-page");
+    });
+
+    $(document).on("pageshow", "#charting-page", function() {
+        getActivityData(currDate[0], currDate[1]);
+    });
+
+    $(".left-panel-button").on("touchend", function(e) {
+        $("#left-panel").panel("open");
+    });
+
+    $("#prev-day-button").on("touchstart", function(e) {
+        getPrevDay();
+    });
+
+    $("#next-day-button").on("touchstart", function(e) {
+        getNextDay();
+    });
+
+    $("#show-attributes-button").on("touchstart", function(e) {
+        $("#attributes-popup").popup("open", {
+            positionTo: e.target
+        });
+        e.preventDefault();
+    });
+
+    $("#left-panel").on("panelbeforeopen", function(e) {
+        if ($("#attributes-popup").parent().hasClass("ui-popup-active")) {
+            $("#attributes-popup").popup("close");
+        }
+    });
+
+    $("#left-panel").on("panelbeforeclose", function(e) {
+        if ($("#attributes-popup").parent().hasClass("ui-popup-active")) {
+            $("#attributes-popup").popup("close");
+        }
+    });
+
+    $("#open-charting-page").click(function(e) {
+        if ($(":mobile-pagecontainer").pagecontainer("getActivePage")[0].id !== "charting-page") {
+            $.mobile.changePage("#charting-page");
+        }
+    });
+
+    $("#open-logging-page").click(function(e) {
+        if ($(":mobile-pagecontainer").pagecontainer("getActivePage")[0].id !== "logging-page") {
+            $.mobile.changePage("#logging-page");
+        }
+    });
+
+    $(document).on("pagechange", function() {
+        if ($.mobile.activePage.jqmData("panel") === "open") {
+            $("#left-panel").panel("close");
+        }
+    });
+
+    $("input[type='checkbox']").on("focus", function(e) {
+        // this is a work-around fixing an upstream bug #5706 in jquery mobile 1.4.5
+        // where the radio buttons doesn't lose focus stays highlighted
+        e.stopImmediatePropagation();
+    });
+
+    $("input[type='checkbox']").on("change", function() {
+        graphInstance.setItemVisibility("heart_rate", $("#checkbox-heartrate").is(":checked"), true);
+        graphInstance.setItemVisibility("body_temp", $("#checkbox-bodytemp").is(":checked"), true);
+        graphInstance.setItemVisibility("steps", $("#checkbox-steps").is(":checked"), true);
+        graphInstance.setItemVisibility("calories", $("#checkbox-calories").is(":checked"), true);
+        graphInstance.setItemVisibility("blood_sugar", $("#checkbox-bloodsugar").is(":checked"), true);
+    });
+
+    function showToast(message) {
+        console.log(message);
+        if ($("#toast-popup").length) {
+            $("#toast-popup").html("<p>" + message + "</p>");
+            return;
+        }
+
+        var content = "<p>" + message + "</p>";
+        var popup = $("<div/>", {
+            "id": "toast-popup",
+            "data-role": "popup"
+        }).append(content);
+        $.mobile.pageContainer.pagecontainer("getActivePage").append(popup);
+        $("#toast-popup").on("popupafterclose", function() {
+            $(this).remove();
+        }).on("popupafteropen", function() {
+            $(this).popup("reposition", {
+                "positionTo": "window"
+            });
+            setTimeout(function() {
+                $("#toast-popup").popup("close");
+            }, 1000);
+        }).popup({
+            dismissible: false,
+            history: false,
+            theme: "a",
+            transition: "pop"
+        }).popup("open");
+    }
+</script>

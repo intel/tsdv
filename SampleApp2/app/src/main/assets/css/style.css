@@ -1,0 +1,81 @@
+/*
+ * Copyright (c) 2015, Intel Corporation.
+ *
+ * This program is licensed under the terms and conditions of the
+ * Apache License, version 2.0.  The full text of the Apache License is at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ */
+
+html,body,div[data-role ="page"], div[data-role="content"] {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    -webkit-user-select: none;
+}
+
+/* charting page */
+svg
+{
+    font: 10px sans-serif;
+}
+
+
+#statistics
+{
+    color: black;
+    opacity: 0.60;
+    pointer-events: none;
+    text-align: center;
+    font-size: 16pt;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    position: absolute;
+    margin: 0;
+    margin-top: 5px;
+    left: 35px;
+    z-index: 1;
+}
+
+.axis
+{
+    shape-rendering: crispEdges;
+    font-size: 11px;
+}
+
+.axis path, .axis line
+{
+    fill: none;
+    stroke-width: .5 px;
+}
+
+.x.axis path
+{
+    stroke: #000;
+}
+
+.x.axis line, .x.axis path
+{
+    stroke: none;
+    stroke-opacity: 0;
+}
+
+.x.axis text
+{
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.y.axis line
+{
+    stroke: #ddd;
+}
+
+
+rect.pane
+{
+    cursor: move;
+    fill: none;
+    pointer-events: all;
+}
+
